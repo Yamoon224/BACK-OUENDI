@@ -7,7 +7,10 @@ use App\Repositories\UserRepository;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
@@ -88,5 +91,45 @@ class UserController extends Controller
     {
         $this->repository->delete($id);
         return response()->noContent();
+    }
+
+    /**
+     * Login API – JWT
+     */
+    public function apiLogin(Request $request)
+    {
+        $phone = $request->input('phone');
+        $password = $request->input('password');
+        $role = 'student';
+
+        $user = User::with('credits')->firstWhere(compact('phone', 'role'));
+
+        if (! $user || ! Hash::check($password, $user->password)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Identifiants Incorrects',
+            ], 401);
+        }
+
+        $token = JWTAuth::fromUser($user);
+
+        return response()->json([
+            'success' => true,
+            'token' => $token,
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * Logout API – JWT
+     */
+    public function apiLogout()
+    {
+        JWTAuth::invalidate(JWTAuth::getToken());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Déconnexion réussie'
+        ]);
     }
 }
