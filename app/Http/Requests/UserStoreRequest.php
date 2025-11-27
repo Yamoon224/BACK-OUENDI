@@ -14,8 +14,8 @@ class UserStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'last_name'         => 'required|string|max:50',
-            'first_name'        => 'required|string|max:50',
+            'last_name'         => 'nullable|string|max:50',
+            'first_name'        => 'nullable|string|max:50',
             'email'             => 'nullable|email|max:100|unique:users,email',
             'phone'             => 'required|string|max:100|unique:users,phone',
             'password'          => 'required|string|min:4',

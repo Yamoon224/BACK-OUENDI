@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->name('api.v1.')->group(function () {
     Route::resource('credits', CreditController::class);
+    Route::resource('users', UserController::class);
 
     Route::post('/login', [UserController::class, 'apiLogin']);
     Route::post('/logout', [UserController::class, 'apiLogout'])->middleware('jwt.auth');
