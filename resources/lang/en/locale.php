@@ -105,4 +105,19 @@
         // Growth labels
         'growth_positive' => '(+ :value%)',
         'growth_negative' => '(- :value%)',
+        
+        'total' => 'Total',
+        'find_student_by_keyword' => 'Find By Keyword',
+
+        'credit_requests' => 'Credit Requests',
+        'request_date'    => 'Request Date',
+        'request_status'  => 'Request Status',
+        'amount'          => 'Amount',
+
+        'total_credits' => 'Total Credits',
+        'pending_credits' => 'Pending Credits',
+        'approved_credits' => 'Approved Credits',
+        'rejected_credits' => 'Rejected Credits',
+        'total_requests' => 'Total Requests',
+        'last_week_analytics' => 'Last week analytics',
     ];

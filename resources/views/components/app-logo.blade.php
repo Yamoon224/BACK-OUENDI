@@ -7,7 +7,7 @@
 <img 
     src="{{ asset('images/logo.png') }}"
     alt="LOGO"
-    class="{{ $isRadius ? 'rounded-full' : '' }}"
+    style="{{ $isRadius ? 'border-radius: 50%' : '' }}"
     width="{{ $width }}"
     height="{{ $height }}"
 >

@@ -93,6 +93,10 @@ class UserController extends Controller
             $data['university'] = strtoupper($data['university']);
         }
 
+        if (!empty($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
+
         $user = $this->repository->update($id, $data);
         return redirect()->route('users.index');
     }

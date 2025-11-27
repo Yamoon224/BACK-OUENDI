@@ -96,4 +96,20 @@
         'paid_students' => 'Étudiants payés',
         'active_students' => 'Étudiants actifs',
         'pending_students' => 'Étudiants en attente',
+
+        'total' => 'Total',
+        'find_student_by_keyword' => 'Recherche Par Mots clés',
+
+        'credit_requests' => 'Demandes de crédit',
+        'request_date'    => 'Date de demande',
+        'request_status'  => 'Statut de la demande',
+        'amount'          => 'Montant',
+
+        // fr_FR
+        'total_credits'      => 'Total des crédits',
+        'pending_credits'    => 'Crédits en attente',
+        'approved_credits'   => 'Crédits approuvés',
+        'rejected_credits'   => 'Crédits rejetés',
+        'total_requests'     => 'Total des demandes',
+        'last_week_analytics'=> 'Analyse de la semaine dernière',
     ];

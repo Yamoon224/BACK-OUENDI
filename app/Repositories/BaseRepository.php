@@ -29,34 +29,38 @@ abstract class BaseRepository implements BaseRepositoryInterface
         array $with = [],
         int $page = 10,
         array $conditions = [],
+        array $searchConditions = [],   // nouveau paramètre
         int $skip = 0,
         string $orderBy = 'id',
         string $direction = 'desc'
     ) {
         $query = $this->model::with($with);
     
+        // WHERE (AND) pour les conditions classiques
         foreach ($conditions as $condition) {
             [$field, $operator, $value] = $condition;
     
-            // Cas WHERE IN
             if (strtoupper($operator) === 'IN' && is_array($value)) {
                 $query->whereIn($field, $value);
-            }
-            // Cas WHERE LIKE
-            elseif (strtoupper($operator) === 'LIKE') {
-                $query->where($field, 'LIKE', $value);
-            }
-            // Cas normal (=, >, <, etc.)
-            else {
+            } else {
                 $query->where($field, $operator, $value);
             }
+        }
+    
+        // OR WHERE pour les recherches LIKE
+        if (!empty($searchConditions)) {
+            $query->where(function ($q) use ($searchConditions) {
+                foreach ($searchConditions as $search) {
+                    [$field, $keyword] = $search;
+                    $q->orWhere($field, 'LIKE', "%{$keyword}%");
+                }
+            });
         }
     
         return $query->orderBy($orderBy, $direction)
                      ->skip($skip)
                      ->paginate($page);
     }
-    
 
     public function find(string $id, array $with = [])
     {

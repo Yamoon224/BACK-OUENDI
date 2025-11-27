@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" class=" layout-navbar-fixed layout-menu-fixed layout-compact" dir="ltr"
+<html lang="{{ app()->getLocale() }}" class="layout-navbar-fixed layout-menu-fixed layout-compact" dir="ltr"
     data-skin="default" data-bs-theme="light" data-assets-path="{{ public_path() }}" data-template="vertical-menu-template">
     <head>
         <meta charset="utf-8">
@@ -66,7 +66,7 @@
         <script src="{{ asset('js/config.js') }}"></script>
     </head>
     <body>
-        <div class="layout-wrapper layout-content-navbar ">
+        <div class="layout-wrapper layout-content-navbar">
             <div class="layout-container">
 
                 <x-app-aside></x-app-aside>

@@ -7,6 +7,7 @@ use App\Repositories\CreditRepository;
 use App\Http\Resources\CreditResource;
 use App\Http\Requests\CreditStoreRequest;
 use App\Http\Requests\CreditUpdateRequest;
+use Illuminate\Http\Client\Request;
 
 class CreditController extends Controller
 {
@@ -20,9 +21,16 @@ class CreditController extends Controller
     /**
      * Afficher la liste des crédits.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $credits = $this->repository->all();
+        // Vérifier si un user_id est passé en paramètre
+        $userId = $request->query('user_id');
+
+            // Récupérer les crédits de l'utilisateur donné
+        $credits = $userId 
+            ? $this->repository->all([], [['user_id', '=', $userId]])
+                : $this->repository->all();
+
         return CreditResource::collection($credits);
     }
 

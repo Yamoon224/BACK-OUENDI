@@ -62,7 +62,7 @@
         <script src="{{ asset('js/config.js') }}"></script>
     </head>
     <body>
-        <div class="position-relative">
+        <div class="position-relative" style="background: url({{ asset('images/bg-auth.png') }}); background-size: cover">
             <div class="authentication-wrapper authentication-basic container-p-y p-2 p-sm-0">
                 <div class="authentication-inner py-3">
                     <!-- Login -->
@@ -72,7 +72,7 @@
                             <a href="{{ route('welcome') }}" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
                                     <span class="text-primary">
-                                        <x-app-logo width="80" height="80"></x-app-logo>
+                                        <x-app-logo width="80" height="80" isRadius="'true'"></x-app-logo>
                                     </span>
                                 </span>
                             </a>

@@ -18,10 +18,13 @@ use App\Http\Controllers\UserController;
 |
 */
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [Controller::class, 'dashboard'])->name('dashboard');
-    Route::resource('students', StudentController::class);
-    Route::resource('credits', CreditController::class);
+    
     Route::resource('users', UserController::class);
+    Route::resource('credits', CreditController::class);
+    Route::resource('students', StudentController::class);
+
+    Route::get('/dashboard', [Controller::class, 'dashboard'])->name('dashboard');
+    Route::get('/students-search', [StudentController::class, 'search'])->name('students.search');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

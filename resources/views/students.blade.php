@@ -108,11 +108,11 @@
             <div class="card-header d-flex flex-wrap justify-content-between gap-4">
                 <div class="card-title mb-0 me-1">
                     <h5 class="mb-0">@lang('locale.student', ['suffix'=>'s'])</h5>
-                    <p class="mb-0 text-body">Total 6 course you have purchased</p>
+                    {{-- <p class="mb-0 text-body" id="students-count">@lang('locale.total'): {{ $students->count() }} @lang('locale.student', ['suffix'=>'(s)'])</p> --}}
                 </div>
                 <div class="d-flex justify-content-md-end align-items-center gap-6 flex-wrap">
                     <div class="d-flex align-items-center justify-content-between app-academy-md-80">
-                        <input type="search" placeholder="Find your course" class="form-control form-control-sm me-4" />
+                        <input type="search" name="keyword" placeholder="@lang('locale.find_student_by_keyword')..." class="form-control form-control-sm me-4" />
                     </div>
 
                     <a class="btn btn-primary text-white" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddUser">
@@ -120,7 +120,7 @@
                     </a>
                 </div>
             </div>
-            <div class="card-body mt-1">
+            <div class="card-body mt-1" id="search-student-keyword">
                 <div class="row">
                     <div class="col-8 mx-auto">
                         @if (!$errors->isEmpty())
@@ -219,36 +219,38 @@
                     <ul class="pagination mb-0">
 
                         {{-- FIRST PAGE --}}
-                        <li class="page-item {{ $items->onFirstPage() ? 'disabled' : '' }}">
-                            <a class="page-link" href="{{ $items->url(1) }}">
+                        <li class="page-item {{ $students->onFirstPage() ? 'disabled' : '' }}">
+                            <a class="page-link" href="{{ $students->url(1) }}">
                                 <i class="icon-base ri ri-skip-back-mini-line icon-22px"></i>
                             </a>
                         </li>
 
                         {{-- PREVIOUS --}}
-                        <li class="page-item {{ $items->onFirstPage() ? 'disabled' : '' }}">
-                            <a class="page-link" href="{{ $items->previousPageUrl() }}">
+                        <li class="page-item {{ $students->onFirstPage() ? 'disabled' : '' }}">
+                            <a class="page-link" href="{{ $students->previousPageUrl() }}">
                                 <i class="icon-base ri ri-arrow-left-s-line icon-22px"></i>
                             </a>
                         </li>
 
                         {{-- PAGE NUMBERS --}}
-                        @foreach ($items->links()->elements[0] ?? [] as $page => $url)
-                            <li class="page-item {{ $items->currentPage() == $page ? 'active' : '' }}">
-                                <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                            </li>
+                        @foreach ($students->toArray()['links'] as $link)
+                            @if(is_numeric($link['label']))
+                                <li class="page-item {{ $link['active'] ? 'active' : '' }}">
+                                    <a class="page-link" href="{{ $link['url'] }}">{{ $link['label'] }}</a>
+                                </li>
+                            @endif
                         @endforeach
 
                         {{-- NEXT --}}
-                        <li class="page-item {{ !$items->hasMorePages() ? 'disabled' : '' }}">
-                            <a class="page-link" href="{{ $items->nextPageUrl() }}">
+                        <li class="page-item {{ !$students->hasMorePages() ? 'disabled' : '' }}">
+                            <a class="page-link" href="{{ $students->nextPageUrl() }}">
                                 <i class="icon-base ri ri-arrow-right-s-line icon-22px"></i>
                             </a>
                         </li>
 
                         {{-- LAST PAGE --}}
-                        <li class="page-item {{ !$items->hasMorePages() ? 'disabled' : '' }}">
-                            <a class="page-link" href="{{ $items->url($items->lastPage()) }}">
+                        <li class="page-item {{ !$students->hasMorePages() ? 'disabled' : '' }}">
+                            <a class="page-link" href="{{ $students->url($students->lastPage()) }}">
                                 <i class="icon-base ri ri-skip-forward-mini-line icon-22px"></i>
                             </a>
                         </li>
@@ -496,6 +498,16 @@
                 form.find('#edit_level_class').val(student.level_class);
                 form.find('#edit_university').val(student.university);
             });
+
+            $('input[name="keyword"]').on('keyup', function () {
+                let keyword = $(this).val();
+
+                $('#search-student-keyword').load("{{ route('students.search') }}", {
+                    'keyword':keyword, 
+                    '_method':'GET',
+                    '_token': $('meta[name="csrf-token"]').prop('content')
+                });
+            })
         </script>
     @endpush
 </x-app-layout>

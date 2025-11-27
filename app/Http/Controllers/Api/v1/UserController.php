@@ -7,6 +7,7 @@ use App\Repositories\UserRepository;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -24,7 +25,28 @@ class UserController extends Controller
 
     public function store(UserStoreRequest $request)
     {
-        $user = $this->repository->create($request->validated());
+        $data = $request->validated();
+
+        // 2. Gestion des fichiers uploadés
+        if ($request->hasFile('cni_path')) {
+            $data['cni_path'] = 'storage/' . $request->file('cni_path')->store('uploads/cni', 'public');
+        }
+
+        if ($request->hasFile('student_card_path')) {
+            $data['student_card_path'] = 'storage/' . $request->file('student_card_path')->store('uploads/student_cards', 'public');
+        }
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = 'storage/' . $request->file('photo')->store('uploads/photos', 'public');
+        }
+
+        if (!empty($data['university'])) {
+            $data['university'] = strtoupper($data['university']);
+        }
+
+        $data['password'] = Hash::make($data['password']);
+
+        $user = $this->repository->create($data);
         return new UserResource($user);
     }
 
@@ -36,7 +58,29 @@ class UserController extends Controller
 
     public function update(UserUpdateRequest $request, $id)
     {
-        $user = $this->repository->update($id, $request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('cni_path')) {
+            $data['cni_path'] = 'storage/' . $request->file('cni_path')->store('uploads/cni', 'public');
+        }
+
+        if ($request->hasFile('student_card_path')) {
+            $data['student_card_path'] = 'storage/' . $request->file('student_card_path')->store('uploads/student_cards', 'public');
+        }
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = 'storage/' . $request->file('photo')->store('uploads/photos', 'public');
+        }
+
+        if (!empty($data['university'])) {
+            $data['university'] = strtoupper($data['university']);
+        }
+
+        if (!empty($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
+
+        $user = $this->repository->update($id, $data);
         return new UserResource($user);
     }
 

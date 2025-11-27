@@ -30,10 +30,11 @@ interface BaseRepositoryInterface
         array $with = [],
         int $page = 10,
         array $conditions = [],
+        array $searchConditions = [],
         int $skip = 0,
         string $orderBy = 'id',
         string $direction = 'desc'
-    );
+    );    
 
     /**
      * Trouve un enregistrement par son ID avec relations facultatives.

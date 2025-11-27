@@ -8,78 +8,92 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <!-- Card Border Shadow -->
         <div class="row g-6">
-            <div class="col-sm-6 col-lg-3">
-                <div class="card card-border-shadow-primary h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="avatar me-4">
-                                <span class="avatar-initial rounded-3 bg-label-primary"><i
-                                        class="icon-base ri ri-car-line icon-24px"></i></span>
+            <div class="row g-6">
+                <!-- Total Users -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-border-shadow-primary h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="avatar me-4">
+                                    <span class="avatar-initial rounded-3 bg-label-primary">
+                                        <i class="icon-base ri ri-group-line icon-24px"></i>
+                                    </span>
+                                </div>
+                                <h4 class="mb-0">{{ $totalUsers }}</h4>
                             </div>
-                            <h4 class="mb-0">42</h4>
+                            <h6 class="mb-0 fw-normal">@lang('locale.total_users')</h6>
+                            <p class="mb-0">
+                                <span class="me-1 fw-medium">+{{ $growthUsers }}%</span>
+                                <small class="text-body-secondary">@lang('locale.last_week_analytics')</small>
+                            </p>
                         </div>
-                        <h6 class="mb-0 fw-normal">On route vehicles</h6>
-                        <p class="mb-0">
-                            <span class="me-1 fw-medium">+18.2%</span>
-                            <small class="text-body-secondary">than last week</small>
-                        </p>
+                    </div>
+                </div>
+            
+                <!-- Active Students -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-border-shadow-success h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="avatar me-4">
+                                    <span class="avatar-initial rounded-3 bg-label-success">
+                                        <i class="icon-base ri ri-user-follow-line icon-24px"></i>
+                                    </span>
+                                </div>
+                                <h4 class="mb-0">{{ $activeStudents }}</h4>
+                            </div>
+                            <h6 class="mb-0 fw-normal">@lang('locale.active_students')</h6>
+                            <p class="mb-0">
+                                <span class="me-1 fw-medium">+{{ $growthActive }}%</span>
+                                <small class="text-body-secondary">@lang('locale.last_week_analytics')</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Pending Credits -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-border-shadow-warning h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="avatar me-4">
+                                    <span class="avatar-initial rounded-3 bg-label-warning">
+                                        <i class="icon-base ri ri-time-line icon-24px"></i>
+                                    </span>
+                                </div>
+                                <h4 class="mb-0">{{ $pendingCredits }}</h4>
+                            </div>
+                            <h6 class="mb-0 fw-normal">@lang('locale.pending_credits')</h6>
+                            <p class="mb-0">
+                                <span class="me-1 fw-medium">+{{ $growthPending }}%</span>
+                                <small class="text-body-secondary">@lang('locale.last_week_analytics')</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Approved Credits -->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-border-shadow-info h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="avatar me-4">
+                                    <span class="avatar-initial rounded-3 bg-label-info">
+                                        <i class="icon-base ri ri-checkbox-circle-line icon-24px"></i>
+                                    </span>
+                                </div>
+                                <h4 class="mb-0">{{ $approvedCredits }}</h4>
+                            </div>
+                            <h6 class="mb-0 fw-normal">@lang('locale.approved_credits')</h6>
+                            <p class="mb-0">
+                                <span class="me-1 fw-medium">+{{ $growthApproved }}%</span>
+                                <small class="text-body-secondary">@lang('locale.last_week_analytics')</small>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="card card-border-shadow-warning h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="avatar me-4">
-                                <span class="avatar-initial rounded-3 bg-label-warning"><i
-                                        class="icon-base ri ri-alert-line icon-24px"></i></span>
-                            </div>
-                            <h4 class="mb-0">8</h4>
-                        </div>
-                        <h6 class="mb-0 fw-normal">Vehicles with errors</h6>
-                        <p class="mb-0">
-                            <span class="me-1 fw-medium">-8.7%</span>
-                            <small class="text-body-secondary">than last week</small>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="card card-border-shadow-danger h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="avatar me-4">
-                                <span class="avatar-initial rounded-3 bg-label-danger"><i
-                                        class="icon-base ri ri-route-line icon-24px"></i></span>
-                            </div>
-                            <h4 class="mb-0">27</h4>
-                        </div>
-                        <h6 class="mb-0 fw-normal">Deviated from route</h6>
-                        <p class="mb-0">
-                            <span class="me-1 fw-medium">+4.3%</span>
-                            <small class="text-body-secondary">than last week</small>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="card card-border-shadow-info h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center mb-2">
-                            <div class="avatar me-4">
-                                <span class="avatar-initial rounded-3 bg-label-info"><i
-                                        class="icon-base ri ri-time-line icon-24px"></i></span>
-                            </div>
-                            <h4 class="mb-0">13</h4>
-                        </div>
-                        <h6 class="mb-0 fw-normal">Late vehicles</h6>
-                        <p class="mb-0">
-                            <span class="me-1 fw-medium">-2.5%</span>
-                            <small class="text-body-secondary">than last week</small>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            
             <!--/ Card Border Shadow -->
 
             <!-- Shipment statistics-->
@@ -121,136 +135,49 @@
 
             <!-- Delivery Performance -->
             <div class="col-lg-6 col-xxl-4 order-2 order-xxl-2">
-                <div class="card h-100">
-                    <div class="card-header d-flex justify-content-between">
-                        <div>
-                            <h5 class="card-title mb-1">Delivery Performance</h5>
-                            <p class="card-subtitle mb-0">12% increase in this month</p>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn-text-secondary rounded-pill text-body-secondary border-0 p-1"
-                                type="button" id="deliveryPerformance" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-base ri ri-more-2-line"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="deliveryPerformance">
-                                <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <ul class="p-0 m-0">
-                            <li class="d-flex mb-6 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded-3 bg-label-primary"><i
-                                            class="icon-base ri ri-gift-line icon-24px"></i></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0 fw-normal">Packages in transit</h6>
-                                        <small class="text-success fw-normal d-block">
-                                            <i class="icon-base ri ri-arrow-up-s-line icon-24px"></i>
-                                            25.8%
-                                        </small>
-                                    </div>
-                                    <div class="user-progress">
-                                        <h6 class="mb-0">10k</h6>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex mb-6 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded-3 bg-label-info"><i
-                                            class="icon-base ri ri-car-line icon-24px"></i></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0 fw-normal">Packages out for delivery</h6>
-                                        <small class="text-success fw-normal d-block">
-                                            <i class="icon-base ri ri-arrow-up-s-line icon-24px"></i>
-                                            4.3%
-                                        </small>
-                                    </div>
-                                    <div class="user-progress">
-                                        <h6 class="mb-0">5k</h6>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex mb-6 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded-3 bg-label-success"><i
-                                            class="icon-base ri ri-check-line text-success icon-24px"></i></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0 fw-normal">Packages delivered</h6>
-                                        <small class="text-danger fw-normal d-block">
-                                            <i class="icon-base ri ri-arrow-down-s-line icon-24px"></i>
-                                            12.5
-                                        </small>
-                                    </div>
-                                    <div class="user-progress">
-                                        <h6 class="mb-0">15k</h6>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex mb-6 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded-3 bg-label-warning"><i
-                                            class="icon-base ri ri-home-line icon-24px"></i></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0 fw-normal">Delivery success rate</h6>
-                                        <small class="text-success fw-normal d-block">
-                                            <i class="icon-base ri ri-arrow-up-s-line icon-24px"></i>
-                                            35.6%
-                                        </small>
-                                    </div>
-                                    <div class="user-progress">
-                                        <h6 class="mb-0">95%</h6>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex mb-6 pb-1">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded-3 bg-label-secondary"><i
-                                            class="icon-base ri ri-timer-line icon-24px"></i></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0 fw-normal">Average delivery time</h6>
-                                        <small class="text-danger fw-normal d-block">
-                                            <i class="icon-base ri ri-arrow-down-s-line icon-24px"></i>
-                                            2.15
-                                        </small>
-                                    </div>
-                                    <div class="user-progress">
-                                        <h6 class="mb-0">2.5 Days</h6>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="d-flex">
-                                <div class="avatar flex-shrink-0 me-3">
-                                    <span class="avatar-initial rounded-3 bg-label-danger"><i
-                                            class="icon-base ri ri-user-line icon-24px"></i></span>
-                                </div>
-                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                    <div class="me-2">
-                                        <h6 class="mb-0 fw-normal">Customer satisfaction</h6>
-                                        <small class="text-success fw-normal d-block">
-                                            <i class="icon-base ri ri-arrow-up-s-line icon-24px"></i>
-                                            5.7%
-                                        </small>
-                                    </div>
-                                    <div class="user-progress">
-                                        <h6 class="mb-0">4.5/5</h6>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                <div class="card overflow-hidden">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th class="text-truncate">@lang('locale.user', ['suffix'=>''])</th>
+                                    <th class="text-truncate">@lang('locale.email')</th>
+                                    <th class="text-truncate">@lang('locale.role')</th>
+                                    <th class="text-truncate">@lang('locale.status')</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($users as $user)
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-sm me-4">
+                                                <img src="{{  asset($user->photo ? $user->photo : 'images/avatars/default.png') }}"
+                                                     alt="Avatar" class="rounded-circle" />
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0 text-truncate">{{ $user->first_name }} {{ $user->last_name }}</h6>
+                                                <small class="text-truncate">{{ $user->phone }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-truncate">{{ $user->email }}</td>
+                                    <td class="text-truncate text-capitalize">{{ $user->role }}</td>
+                                    <td>
+                                        @php
+                                            $statusClasses = [
+                                                'ENABLE' => 'bg-label-success',
+                                                'DISABLE' => 'bg-label-warning',
+                                            ];
+                                        @endphp
+                                        <span class="badge {{ $statusClasses[$user->status] ?? 'bg-label-secondary' }} rounded-pill">
+                                            {{ $user->status }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -502,180 +429,7 @@
                     </div>
                 </div>
             </div>
-            <!--/ Orders by Countries -->
-
-            <div class="col-12 order-5">
-                <div class="card overflow-hidden">
-                    <div class="table-responsive">
-                        <table class="table table-sm">
-                            <thead>
-                                <tr>
-                                    <th class="text-truncate">User</th>
-                                    <th class="text-truncate">Email</th>
-                                    <th class="text-truncate">Role</th>
-                                    <th class="text-truncate">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-sm me-4">
-                                                <img src="{{ asset('images/avatars/1.png') }}" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-0 text-truncate">Jordan Stevenson</h6>
-                                                <small class="text-truncate">@amiccoo</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-truncate">susanna.Lind57@gmail.com</td>
-                                    <td class="text-truncate">
-                                        <div class="d-flex align-items-center">
-                                            <i class="icon-base ri ri-vip-crown-line icon-22px text-primary me-2"></i>
-                                            <span>Admin</span>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-warning rounded-pill">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-sm me-4">
-                                                <img src="{{ asset('images/avatars/3.png') }}" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-0 text-truncate">Benedetto Rossiter</h6>
-                                                <small class="text-truncate">@brossiter15</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-truncate">estelle.Bailey10@gmail.com</td>
-                                    <td class="text-truncate">
-                                        <div class="d-flex align-items-center">
-                                            <i class="icon-base ri ri-edit-box-line text-warning icon-22px me-2"></i>
-                                            <span>Editor</span>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-success rounded-pill">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-sm me-4">
-                                                <img src="{{ asset('images/avatars/2.png') }}" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-0 text-truncate">Bentlee Emblin</h6>
-                                                <small class="text-truncate">@bemblinf</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-truncate">milo86@hotmail.com</td>
-                                    <td class="text-truncate">
-                                        <div class="d-flex align-items-center">
-                                            <i class="icon-base ri ri-computer-line text-danger icon-22px me-2"></i>
-                                            <span>Author</span>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-success rounded-pill">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-sm me-4">
-                                                <img src="{{ asset('images/avatars/5.png') }}" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-0 text-truncate">Bertha Biner</h6>
-                                                <small class="text-truncate">@bbinerh</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-truncate">lonnie35@hotmail.com</td>
-                                    <td class="text-truncate">
-                                        <div class="d-flex align-items-center">
-                                            <i class="icon-base ri ri-edit-box-line text-warning icon-22px me-2"></i>
-                                            <span>Editor</span>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-warning rounded-pill">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-sm me-4">
-                                                <img src="{{ asset('images/avatars/4.png') }}" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-0 text-truncate">Beverlie Krabbe</h6>
-                                                <small class="text-truncate">@bkrabbe1d</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-truncate">ahmad_Collins@yahoo.com</td>
-                                    <td class="text-truncate">
-                                        <div class="d-flex align-items-center">
-                                            <i class="icon-base ri ri-pie-chart-2-line icon-22px text-info me-2"></i>
-                                            <span>Maintainer</span>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-success rounded-pill">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-sm me-4">
-                                                <img src="{{ asset('images/avatars/7.png') }}" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-0 text-truncate">Bradan Rosebotham</h6>
-                                                <small class="text-truncate">@brosebothamz</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-truncate">tillman.Gleason68@hotmail.com</td>
-                                    <td class="text-truncate">
-                                        <div class="d-flex align-items-center">
-                                            <i class="icon-base ri ri-edit-box-line text-warning icon-22px me-2"></i>
-                                            <span>Editor</span>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-warning rounded-pill">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-sm me-4">
-                                                <img src="{{ asset('images/avatars/6.png') }}" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-0 text-truncate">Bree Kilday</h6>
-                                                <small class="text-truncate">@bkildayr</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-truncate">otho21@gmail.com</td>
-                                    <td class="text-truncate">
-                                        <div class="d-flex align-items-center">
-                                            <i class="icon-base ri ri-user-3-line icon-22px text-success me-2"></i>
-                                            <span>Subscriber</span>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-success rounded-pill">Active</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            <!--/ Orders by Countries -->                        
         </div>
         <!--/ On route vehicles Table -->
     </div>

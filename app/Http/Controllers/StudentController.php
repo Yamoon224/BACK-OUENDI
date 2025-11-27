@@ -42,13 +42,60 @@ class StudentController extends Controller
         $growthActive   = $previousWeekActive ? round((($activeStudents - $previousWeekActive) / $previousWeekActive) * 100) : 0;
         $growthPending  = $previousWeekPending ? round((($pendingStudents - $previousWeekPending) / $previousWeekPending) * 100) : 0;
 
-        $students = $this->repository->paginate([], 10, [['role', '=', 'student']]);
+        $students = $this->repository->paginate([], 9, [['role', '=', 'student']], []);
         $levels = ['LICENCE I', 'LICENCE II', 'LICENCE III', 'MASTER I', 'MASTER II', 'DOCTORAT'];
+        // dd($students);
         return view('students', compact(
             'levels', 'students',
             'totalStudents', 'paidStudents', 'activeStudents', 'pendingStudents',
             'growthStudents', 'growthPaid', 'growthActive', 'growthPending'
         ));
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        // Conditions obligatoires : rôle = student
+        $conditions = [
+            ['role', '=', 'student'],
+        ];
+
+        // Si un keyword est présent, on ajoute les conditions LIKE
+        if (!empty($keyword)) {
+            $likeFields = [
+                'first_name',
+                'last_name',
+                'university',
+                'email',
+                'phone',
+                'level_class',
+            ];
+
+            foreach ($likeFields as $field) {
+                $conditions[] = [$field, 'LIKE', "%{$keyword}%"];
+            }
+        }
+
+
+        // Appel à ton paginate custom
+        // $students = $this->repository->paginate([], 10, $conditions);
+        $students = $this->repository->paginate(
+            with: [],
+            page: 9,
+            conditions: [
+                ['role', '=', 'student']
+            ],
+            searchConditions: [
+                ['first_name', $keyword],
+                ['last_name', $keyword],
+                ['university', $keyword],
+                ['email', $keyword],
+                ['phone', $keyword],
+                ['level_class', $keyword],
+            ]
+        );
+        return view('search-students', compact('students'));
     }
 
     /**
