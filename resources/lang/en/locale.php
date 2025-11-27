@@ -120,4 +120,6 @@
         'rejected_credits' => 'Rejected Credits',
         'total_requests' => 'Total Requests',
         'last_week_analytics' => 'Last week analytics',
+
+        'support' => 'Support',
     ];

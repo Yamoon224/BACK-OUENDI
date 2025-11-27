@@ -24,15 +24,15 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="en"
+                        <a class="dropdown-item" href="{{ route('locale', app()->getLocale() == 'en' ? 'en' : 'fr') }}" data-language="{{ app()->getLocale() == 'en' ? 'en' : 'fr' }}"
                             data-text-direction="ltr">
-                            <span>English</span>
+                            <span class="text-capitalize">@lang('locale.'. app()->getLocale() == 'en' ? 'english' : 'french')</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="fr"
+                        <a class="dropdown-item" href="{{ route('locale', app()->getLocale() == 'fr' ? 'fr' : 'en') }}" data-language="{{ app()->getLocale() == 'fr' ? 'fr' : 'en' }}"
                             data-text-direction="ltr">
-                            <span>French</span>
+                            <span class="text-capitalize">@lang('locale.' . app()->getLocale() == 'fr' ? 'french' : 'english')</span>
                         </a>
                     </li>
                 </ul>
@@ -400,22 +400,21 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="pages-profile-user.html"> <i
-                                class="icon-base ri ri-user-3-line icon-22px me-3"></i><span class="align-middle">My
-                                Profile</span> </a>
+                        <a class="dropdown-item" href="#"> <i
+                                class="icon-base ri ri-user-3-line icon-22px me-3"></i><span class="align-middle">@lang('locale.profile')</span> </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="dropdown-item" href="pages-account-settings-account.html"> <i
                                 class="icon-base ri ri-settings-4-line icon-22px me-3"></i><span
                                 class="align-middle">Settings</span> </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
                         <a class="dropdown-item" href="pages-faq.html"> <i
                                 class="icon-base ri ri-question-line icon-22px me-3"></i><span
-                                class="align-middle">FAQ</span> </a>
+                                class="align-middle">@lang('locale.support')</span> </a>
                     </li>
                     <li>
                         <div class="d-grid px-4 pt-2 pb-1">

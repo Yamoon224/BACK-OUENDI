@@ -56,4 +56,12 @@ class Controller extends BaseController
             'approvedCredits', 'growthApproved'
         ));
     }
+
+    public function setLocaleLanguage($locale)
+    {
+        session(compact('locale'));
+    
+        app()->setLocale(session('locale'));
+        return back()->with(['message'=>'']);
+    }
 }

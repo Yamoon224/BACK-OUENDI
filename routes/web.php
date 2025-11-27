@@ -17,7 +17,9 @@ use App\Http\Controllers\UserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::get('/{locale}/locale', [Controller::class, 'setLocaleLanguage'])->name('locale');
+
+Route::middleware(['auth', 'verified', 'locale'])->group(function () {
     
     Route::resource('users', UserController::class);
     Route::resource('credits', CreditController::class);

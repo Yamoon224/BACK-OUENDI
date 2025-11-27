@@ -65,7 +65,7 @@
         <li class="menu-item">
             <a href="#" target="_blank" class="menu-link">
                 <i class="menu-icon icon-base ri ri-lifebuoy-line"></i>
-                <div data-i18n="Support">Support</div>
+                <div data-i18n="Support">@lang('locale.support')</div>
             </a>
         </li>
 

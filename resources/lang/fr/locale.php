@@ -112,4 +112,6 @@
         'rejected_credits'   => 'Crédits rejetés',
         'total_requests'     => 'Total des demandes',
         'last_week_analytics'=> 'Analyse de la semaine dernière',
+
+        'support' => 'Assistance',
     ];
