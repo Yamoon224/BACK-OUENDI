@@ -18,7 +18,7 @@
 
         <!-- /Search -->
         <ul class="navbar-nav flex-row align-items-center ms-md-auto">
-            <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
+            {{-- <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <i class="icon-base ri ri-translate-2 icon-md"></i>
                 </a>
@@ -36,7 +36,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
             <!--/ Language -->
 
             <!-- Style Switcher -->
