@@ -21,10 +21,10 @@ class CreditController extends Controller
     /**
      * Afficher la liste des crédits.
      */
-    public function index(Request $request)
+    public function index()
     {
         // Vérifier si un user_id est passé en paramètre
-        $userId = $request->query('user_id');
+        $userId = request()->query('user_id');
 
             // Récupérer les crédits de l'utilisateur donné
         $credits = $userId 
