@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html 
     lang="{{ app()->getLocale() }}"
-    class=" layout-wide customizer-hide" dir="ltr" data-skin="default" data-bs-theme="light" data-assets-path="{{ public_path() }}" data-template="vertical-menu-template">
+    class=" layout-wide customizer-hide" dir="ltr" data-skin="default" data-bs-theme="light" data-assets-path="{{ asset('') }}" data-template="vertical-menu-template">
     <head>
         <meta charset="utf-8">
         <meta name="csrf-token" content="{{ csrf_token() }}">
