@@ -236,7 +236,7 @@
 
         <div class="offcanvas-header border-bottom">
             <h5 class="offcanvas-title">
-                <i class="ri ri-edit-line"></i> @lang('locale.edit_credit')
+                <i class="ri ri-edit-line"></i> @lang('locale.edit', ['param'=>__('locale.credit', ['suffix'=>''])])
             </h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
