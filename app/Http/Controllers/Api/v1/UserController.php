@@ -98,19 +98,35 @@ class UserController extends Controller
      */
     public function apiLogin(Request $request)
     {
+        $request->validate([
+            'phone' => 'required',
+            'password' => 'required|min:4',
+        ]);
+
         $phone = $request->input('phone');
         $password = $request->input('password');
         $role = 'student';
 
+        // 🔍 Chercher l'utilisateur existant
         $user = User::with('credits')->firstWhere(compact('phone', 'role'));
 
-        if (! $user || ! Hash::check($password, $user->password)) {
+        // ❌ Si aucun utilisateur → on le crée automatiquement
+        if (! $user) {
+            $user = User::create([
+                'phone' => $phone,
+                'password' => Hash::make($password),
+                'role' => $role,
+            ]);
+        }
+        // ✔️ Sinon, vérifier le mot de passe
+        else if (! Hash::check($password, $user->password)) {
             return response()->json([
                 'success' => false,
                 'message' => 'Identifiants Incorrects',
             ], 401);
         }
 
+        // 🔐 Génération du token
         $token = JWTAuth::fromUser($user);
 
         return response()->json([
