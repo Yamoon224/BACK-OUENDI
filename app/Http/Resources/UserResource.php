@@ -20,8 +20,11 @@ class UserResource extends JsonResource
             'phone'             => $this->phone,
             'status'            => $this->status,
             'role'              => $this->role,
-            'cni_path'          => $this->cni_path,
-            'student_card_path' => $this->student_card_path,
+            'level_class'       => $this->level_class,
+            'university'        => $this->university,
+            'cni_path'          => app_env('url') . '/' . $this->cni_path,
+            'student_card_path' => app_env('url') . '/' . $this->student_card_path,
+            'photo'             => app_env('url') . '/' . $this->photo,
             'created_at'        => $this->created_at,
         ];
     }
