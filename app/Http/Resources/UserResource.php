@@ -22,9 +22,9 @@ class UserResource extends JsonResource
             'role'              => $this->role,
             'level_class'       => $this->level_class,
             'university'        => $this->university,
-            'cni_path'          => app_env('url') . '/' . $this->cni_path,
-            'student_card_path' => app_env('url') . '/' . $this->student_card_path,
-            'photo'             => app_env('url') . '/' . $this->photo,
+            'cni_path'          => $this->cni_path ? app_env('url') . '/' . $this->cni_path : null,
+            'student_card_path' => $this->student_card_path ? app_env('url') . '/' . $this->student_card_path : null,
+            'photo'             => $this->photo ? app_env('url') . '/' . $this->photo : null,
             'created_at'        => $this->created_at,
         ];
     }
