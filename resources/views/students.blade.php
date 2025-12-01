@@ -21,7 +21,7 @@
                                     <h4 class="mb-1 me-2">{{ $totalStudents }}</h4>
                                     <p class="text-success mb-1">(+{{ $growthStudents }}%)</p>
                                 </div>
-                                <small class="mb-0">@lang('locale.total_users')</small>
+                                <small class="mb-0">@lang('locale.total_students_account')</small>
                             </div>
                             <div class="avatar">
                                 <div class="avatar-initial bg-label-primary rounded-3">

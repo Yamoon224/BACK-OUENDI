@@ -114,69 +114,69 @@
 
             <div class="card-body px-4">
                 <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-sm datatables-credits">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>@lang('locale.student', ['suffix'=>''])</th>
+                                    <th>@lang('locale.amount')</th>
+                                    <th>@lang('locale.request_status')</th>
+                                    <th>@lang('locale.request_date')</th>
+                                    <th>@lang('locale.actions')</th>
+                                </tr>
+                            </thead>
 
-                    <table class="table table-bordered table-striped table-sm datatables-credits">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>@lang('locale.student', ['suffix'=>''])</th>
-                                <th>@lang('locale.amount')</th>
-                                <th>@lang('locale.request_status')</th>
-                                <th>@lang('locale.request_date')</th>
-                                <th>@lang('locale.actions')</th>
-                            </tr>
-                        </thead>
+                            <tbody>
+                                @foreach ($credits as $credit)
+                                <tr>
+                                    <td>{{ $credit->id }}</td>
+                                    <td>{{ $credit->user->first_name }} {{ $credit->user->last_name }}</td>
+                                    <td>{{ number_format($credit->amount,2) }} GNF</td>
 
-                        <tbody>
-                            @foreach ($credits as $credit)
-                            <tr>
-                                <td>{{ $credit->id }}</td>
-                                <td>{{ $credit->user->first_name }} {{ $credit->user->last_name }}</td>
-                                <td>{{ number_format($credit->amount,2) }} GNF</td>
+                                    <td>
+                                        <span class="badge 
+                                            @if($credit->status=='pending') bg-label-warning
+                                            @elseif($credit->status=='approved') bg-label-success
+                                            @else bg-label-danger
+                                            @endif">
+                                            {{ ucfirst($credit->status) }}
+                                        </span>
+                                    </td>
 
-                                <td>
-                                    <span class="badge 
-                                        @if($credit->status=='pending') bg-label-warning
-                                        @elseif($credit->status=='approved') bg-label-success
-                                        @else bg-label-danger
-                                        @endif">
-                                        {{ ucfirst($credit->status) }}
-                                    </span>
-                                </td>
+                                    <td>{{ $credit->request_at?->format('d/m/Y H:i:s') }}</td>
 
-                                <td>{{ $credit->request_at?->format('d/m/Y H:i:s') }}</td>
+                                    <td class="text-center">
+                                        <div class="d-flex justify-content-center gap-1">
 
-                                <td class="text-center">
-                                    <div class="d-flex justify-content-center gap-1">
-
-                                        <!-- EDIT -->
-                                        <button class="btn btn-sm btn-primary btn-edit-credit"
-                                                data-bs-toggle="offcanvas"
-                                                data-bs-target="#offcanvasEditCredit"
-                                                data-credit='@json($credit)'>
-                                            <i class="ri ri-edit-2-line"></i>
-                                        </button>
-
-                                        <!-- DELETE -->
-                                        <form action="{{ route('credits.destroy',$credit->id) }}"
-                                              method="POST"
-                                              onsubmit="return confirm('@lang('locale.confirm_delete')');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-sm btn-danger">
-                                                <i class="ri ri-delete-bin-line"></i>
+                                            <!-- EDIT -->
+                                            <button class="btn btn-sm btn-primary btn-edit-credit"
+                                                    data-bs-toggle="offcanvas"
+                                                    data-bs-target="#offcanvasEditCredit"
+                                                    data-credit='@json($credit)'>
+                                                <i class="ri ri-edit-2-line"></i>
                                             </button>
-                                        </form>
 
-                                    </div>
-                                </td>
+                                            <!-- DELETE -->
+                                            <form action="{{ route('credits.destroy',$credit->id) }}"
+                                                method="POST"
+                                                onsubmit="return confirm('@lang('locale.confirm_delete')');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-sm btn-danger">
+                                                    <i class="ri ri-delete-bin-line"></i>
+                                                </button>
+                                            </form>
 
-                            </tr>
-                            @endforeach
-                        </tbody>
+                                        </div>
+                                    </td>
 
-                    </table>
+                                </tr>
+                                @endforeach
+                            </tbody>
 
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -114,4 +114,5 @@
         'last_week_analytics'=> 'Analyse de la semaine dernière',
 
         'support' => 'Assistance',
+        'total_students_account' => 'Total des comptes étudiants',
     ];

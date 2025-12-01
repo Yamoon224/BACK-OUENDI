@@ -24,51 +24,53 @@
                     @endif
                     
                     <div class="col-12">
-                        <table class="datatables-users table table-sm table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>@lang('locale.first_name') & @lang('locale.name')</th>
-                                    <th>@lang('locale.email')</th>
-                                    <th>@lang('locale.phone')</th>
-                                    <th>@lang('locale.role')</th>
-                                    <th>@lang('locale.status')</th>
-                                    <th>@lang('locale.actions')</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($users as $user)
-                                <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->first_name }} {{ $user->last_name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->phone }}</td>
-                                    <td>{{ ucfirst($user->role) }}</td>
-                                    <td><span class="badge {{ $user->status === 'ENABLE' ? 'bg-label-success' : 'bg-label-danger' }}">{{ $user->status }}</span></td>
-                                    <td class="text-center">
-                                        <div class="d-flex justify-content-center gap-1">
-                                            <a href="javascript:;" class="btn btn-sm btn-primary btn-edit-user"
-                                                data-bs-toggle="offcanvas"
-                                                data-bs-target="#offcanvasEditUser"
-                                                data-user='@json($user)'>
-                                                <i class="ri ri-edit-2-line"></i>
-                                            </a>
+                        <div class="table-responsive">
+                            <table class="datatables-users table table-sm table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>@lang('locale.first_name') & @lang('locale.name')</th>
+                                        <th>@lang('locale.email')</th>
+                                        <th>@lang('locale.phone')</th>
+                                        <th>@lang('locale.role')</th>
+                                        <th>@lang('locale.status')</th>
+                                        <th>@lang('locale.actions')</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($users as $user)
+                                    <tr>
+                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $user->first_name }} {{ $user->last_name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->phone }}</td>
+                                        <td>{{ ucfirst($user->role) }}</td>
+                                        <td><span class="badge {{ $user->status === 'ENABLE' ? 'bg-label-success' : 'bg-label-danger' }}">{{ $user->status }}</span></td>
+                                        <td class="text-center">
+                                            <div class="d-flex justify-content-center gap-1">
+                                                <a href="javascript:;" class="btn btn-sm btn-primary btn-edit-user"
+                                                    data-bs-toggle="offcanvas"
+                                                    data-bs-target="#offcanvasEditUser"
+                                                    data-user='@json($user)'>
+                                                    <i class="ri ri-edit-2-line"></i>
+                                                </a>
 
-                                    
-                                            <!-- Delete -->
-                                            <form action="{{ route('users.destroy', $user) }}" method="POST" onsubmit="return confirm('@lang('locale.confirm_delete')');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-sm btn-danger" title="@lang('locale.delete')">
-                                                    <i class="ri ri-delete-bin-line"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                        
+                                                <!-- Delete -->
+                                                <form action="{{ route('users.destroy', $user) }}" method="POST" onsubmit="return confirm('@lang('locale.confirm_delete')');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-sm btn-danger" title="@lang('locale.delete')">
+                                                        <i class="ri ri-delete-bin-line"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

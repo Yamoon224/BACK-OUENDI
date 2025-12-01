@@ -122,4 +122,5 @@
         'last_week_analytics' => 'Last week analytics',
 
         'support' => 'Support',
+        'total_students_account' => 'Total Students Accounts',
     ];
